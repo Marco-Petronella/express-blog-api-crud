@@ -10,6 +10,9 @@ const index = (req,res) => {
 const show = (req,res) => {
     const id = parseInt(req.params.id);
     const requestedPosts = posts.find((post) => post.id === id);
+    if (!requestedPosts) {
+        return res.status(404).json({ error: "Post not found" })
+    }
     res.json(requestedPosts)
 }
 
@@ -29,6 +32,9 @@ const create = (req,res) => {
 const destroy = (req,res) => {
     const id = parseInt(req.params.id);
     const postIndex = posts.findIndex((post) => post.id === id)
+    if (postIndex === -1) {
+        return res.status(404).json({ error: "Post not found" })
+    }
     posts.splice(postIndex, 1)
     console.log(posts)
     res.sendStatus(204)
