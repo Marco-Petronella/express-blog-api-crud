@@ -27,8 +27,11 @@ const create = (req,res) => {
 
 //destroy
 const destroy = (req,res) => {
-    console.log("destroy")
-    res.send("destroy")
+    const id = parseInt(req.params.id);
+    const postIndex = posts.findIndex((post) => post.id === id)
+    posts.splice(postIndex, 1)
+    console.log(posts)
+    res.sendStatus(204)
 }
 
 module.exports = {
@@ -37,4 +40,4 @@ module.exports = {
     update,
     create,
     destroy
-}
+} 
