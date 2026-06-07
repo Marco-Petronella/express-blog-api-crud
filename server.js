@@ -11,3 +11,5 @@ app.listen(port, () => {
 app.get('/', (req,res) => {
   res.send('Il server funziona!')
 })
+
+app.use('/posts', blogRouter)

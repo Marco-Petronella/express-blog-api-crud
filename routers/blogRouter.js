@@ -1,21 +1,21 @@
 const express = require('express')
 const router = express.Router()
 
-const posts = require('../data/posts')
+const blogController = require('../controllers/blogController')
 
 //index
-router.get("/",);
+router.get("/", blogController.index);
 
 //show
-router.get("/:id",);
+router.get("/:id", blogController.show);
 
 //update
-router.get("/:id",);
+router.put("/:id", blogController.update);
 
 //create
-router.get("/",);
+router.post("/", blogController.create);
 
 //destroy
-router.get("/:id",);
+router.delete("/:id", blogController.destroy);
 
-module.exports(router)
+module.exports = router
