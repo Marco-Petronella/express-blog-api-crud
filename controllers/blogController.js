@@ -24,8 +24,12 @@ const update = (req,res) => {
 
 //create
 const create = (req,res) => {
+    const id = posts[posts.length - 1].id + 1
+    const newPost = { id, ...req.body }
+    posts.push(newPost)
+    console.log(posts[posts.length - 1])
     console.log("create")
-    res.send("create")
+    res.status(201).json(newPost)
 }
 
 //destroy
