@@ -27,8 +27,6 @@ const update = (req,res) => {
     thisPost.content = req.body.content || thisPost.content
     thisPost.image = req.body.image || thisPost.image
     thisPost.tags = req.body.tags || thisPost.tags
-    console.log(thisPost)
-    res.json(thisPost)
 }
 
 //create

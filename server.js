@@ -4,8 +4,10 @@ const port = 3000
 const app = express()
 const blogRouter = require('./routers/blogRouter')
 const routeCheck = require('./middleware/routeCheck')
+const errorHandler = require('./middleware/errorHandler')
 
 app.use(express.json())
+
 app.use(routeCheck)
 
 app.listen(port, () => {
@@ -17,3 +19,5 @@ app.get('/', (req,res) => {
 })
 
 app.use('/posts', blogRouter)
+
+app.use(errorHandler)
