@@ -18,8 +18,17 @@ const show = (req,res) => {
 
 //update
 const update = (req,res) => {
-    console.log("update")
-    res.send("update")
+    const id = parseInt(req.params.id);
+    const thisPost = posts.find((post) => post.id === id);
+    if (!thisPost) {
+        return res.status(404).json({ error: "Post not found" })
+    }
+    thisPost.title = req.body.title || thisPost.title
+    thisPost.content = req.body.content || thisPost.content
+    thisPost.image = req.body.image || thisPost.image
+    thisPost.tags = req.body.tags || thisPost.tags
+    console.log(thisPost)
+    res.json(thisPost)
 }
 
 //create
